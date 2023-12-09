@@ -1,6 +1,6 @@
 use dep::std;
 
-fn u8_32s_to_u64_16(
+pub fn u8_32s_to_u64_16(
     arr_a: [u8; 32],
     arr_b: [u8; 32],
 ) -> [u64; 16] {
@@ -25,7 +25,7 @@ fn u8_32s_to_u64_16(
 }
 
 unconstrained
-fn u8_32s_to_u64_16_unconstrained(
+pub fn u8_32s_to_u64_16_unconstrained(
     arr_a: [u8; 32],
     arr_b: [u8; 32],
 ) -> [u64; 16] {
@@ -78,7 +78,7 @@ fn test_u8_32s_to_u64_16() {
     // the above output is the hex "0x8318535b54105d4a7aae60c08fc45f9687181b4fdfc625bd1a753fa7397fed753547f11ca8696646f2f3acb08e31016afac23e630c5d11f59f61fef57b0d2aa5"
 }
 
-fn u8_32_to_u8_64(
+pub fn u8_32_to_u8_64(
     arr_a: [u8; 32],
     arr_b: [u8; 32],
 ) -> [u8; 64] {
@@ -95,7 +95,7 @@ fn u8_32_to_u8_64(
 }
 
 unconstrained
-fn u8_32_to_u8_64_unconstrained(
+pub fn u8_32_to_u8_64_unconstrained(
     arr_a: [u8; 32],
     arr_b: [u8; 32],
 ) -> [u8; 64] {
@@ -112,7 +112,7 @@ fn u8_32_to_u8_64_unconstrained(
 }
 
 
-fn u64_4_to_u8_32(
+pub fn u64_4_to_u8_32(
     array: [u64; 4]
 ) -> [u8; 32] {
     let mut output: [u8; 32] = [0; 32];
@@ -130,7 +130,7 @@ fn u64_4_to_u8_32(
 }
 
 unconstrained
-fn u64_4_to_u8_32_unconstrained(
+pub fn u64_4_to_u8_32_unconstrained(
     array: [u64; 4]
 ) -> [u8; 32] {
     let mut output: [u8; 32] = [0; 32];
@@ -194,7 +194,7 @@ fn test_u64_4_to_u8_32() {
 
 /// @dev this method is used to convert a u8 array to a u160 (which is not supported by Noir, so it's represented as a Field)
 /// @dev will throw on Field overflow
-fn u8_to_u160(
+pub fn u8_to_u160(
     array: [u8]
 ) -> Field {
     let mut addr: Field = 0;
@@ -208,7 +208,7 @@ fn u8_to_u160(
 }
 
 unconstrained
-fn u8_to_u160_unconstrained(
+pub fn u8_to_u160_unconstrained(
     array: [u8]
 ) -> Field {
     let mut addr: Field = 0;
@@ -221,14 +221,14 @@ fn u8_to_u160_unconstrained(
     addr
 }
 
-fn u8_to_eth_address(
+pub fn u8_to_eth_address(
     array: [u8]
 ) -> Field {
     u8_to_u160(array)
 }
 
 unconstrained
-fn u8_to_eth_address_unconstrained(
+pub fn u8_to_eth_address_unconstrained(
     array: [u8]
 ) -> Field {
     u8_to_u160(array)
@@ -253,7 +253,7 @@ fn test_u8_32_to_u160() {
     assert(addr == 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266); // hardhat address 0
 }
 
-fn split_u8_64(
+pub fn split_u8_64(
     arr: [u8; 64]
 ) -> ([u8; 32], [u8; 32]) {
     let mut arr_a: [u8; 32] = [0; 32];
@@ -268,7 +268,7 @@ fn split_u8_64(
 }
 
 unconstrained
-fn split_u8_64_unconstrained(
+pub fn split_u8_64_unconstrained(
     arr: [u8; 64]
 ) -> ([u8; 32], [u8; 32]) {
     let mut arr_a: [u8; 32] = [0; 32];
